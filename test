@@ -1,0 +1,92 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Anna
+ */
+import java.util.Scanner;
+public class test_poisson {
+    
+    public static double poisson(int x,double lamda,double t)
+    {   
+        //y=-l*t , a=e^-lt , b=lt^x
+        double alpha;
+        double e = 2.73;
+        double y;
+        double beta;
+        double poisson;
+        
+        y=-(lamda*t);
+        alpha=Math.pow(e,y);
+        beta=Math.pow(-y,x);
+        poisson=(alpha*beta)/factorial(x);
+        
+         return poisson;
+    }//end poisson method
+    
+    public static double less_or_equal_poisson (int x , double lamda , double t){
+      double alpha;
+        double e = 2.73;
+        double y;
+        double beta;
+        double poisson;
+        double k=0;
+        y=-(lamda*t);
+        alpha=Math.pow(e,y);
+        beta=Math.pow(-y,x);
+        poisson=(alpha*beta)/factorial(x);
+        
+        for (int i=0;i<=x;i++){
+            k=k+poisson(i,lamda,t);
+        }
+        
+        return k;
+    } //end less_than_poisson
+            
+       public static double greater_or_equal_poisson (int x , double lamda , double t){
+        double alpha;
+        double e = 2.73;
+        double y;
+        double beta;
+        double poisson;
+        double k=0;
+        y=-(lamda*t);
+        alpha=Math.pow(e,y);
+        beta=Math.pow(-y,x);
+        poisson=(alpha*beta)/factorial(x);
+        
+        for (int i=0;i<=x;i++){
+            k=k+poisson(i,lamda,t);
+        }
+        
+        return (1-k);
+    } //end greater_or_equal_poisson
+
+
+    public static int factorial(int x){
+       int fact = 1;
+        if (x>0){
+            for (int i=1; i<x ; i++){
+                fact=x*i;
+            }//end for
+        }
+//end if
+        else if (x==0){
+            fact=1;
+        }
+    
+        return fact;
+    }//end factorial
+    
+    
+   public static void main(String args[]){
+           
+           Scanner input = new Scanner(System.in);
+   
+    
+}//end main
+}//end class
